@@ -1,19 +1,26 @@
 import requests
 from PIL import Image
 import os
+
+ip_addr = os.environ.get("SERVER_IP", "localhost")
+
+print("$SERVER_IP={}".format(ip_addr))
 list_filepaths_cat = []
 for file in os.listdir(r"photos\cat"):
     filepath = os.path.join(r"photos\cat", file)
     # print(filepath)
     list_filepaths_cat.append(filepath)
 
+if not os.path.isdir("results"):
+    os.mkdir("results")
+
 i = 0
 for filepath in list_filepaths_cat:
     image_data = open(filepath,"rb").read()
     response = requests.post(
-        "http://localhost:81/v1/vision/detection",
+        "http://{}:81/v1/vision/detection".format(ip_addr),
         files={"image":image_data},
-        data={"min_confidence":0.30}
+        data={"min_confidence":0.50}
     )
     data_json = response.json()
     print(filepath)
