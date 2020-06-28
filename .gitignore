@@ -131,3 +131,5 @@ settings.json
 photos/
 results/
 results2/
+*.png
+*.jpg

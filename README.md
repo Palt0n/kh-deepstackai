@@ -26,5 +26,8 @@ source env/Scripts/activate
 python -m pip install --upgrade pip
 pip install requests
 pip install pillow
+pip install opencv-contrib-python
+pip install scikit-image
+pip install imutils
 ```
 

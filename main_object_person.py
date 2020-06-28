@@ -1,3 +1,6 @@
+"""
+source env/Scripts/activate
+"""
 import requests
 from PIL import Image
 import os
